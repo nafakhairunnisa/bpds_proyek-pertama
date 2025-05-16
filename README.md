@@ -115,11 +115,14 @@ Setelah dilakukan eksperimen dengan beberapa algoritma, model Random Forest menu
 
 Model ini telah diimplementasikan ke dalam aplikasi web sederhana menggunakan Streamlit, agar dapat digunakan oleh pengguna non-teknis secara mudah.
 
-Berikut link akses aplikasi: [Klik di sini](link).
+Berikut link akses aplikasi: [Klik di sini](https://hr-attrition-prediction.streamlit.app/).
 
 Berikut cara run aplikasi di lokal:
 
-**1. Download file zip**
+**1. Clone this repository to your local computer**
+```
+git@github.com:nafakhairunnisa/bpds_proyek-pertama.git
+```
 **2. Setup Environment**
 **Anaconda**
 ```
