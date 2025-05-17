@@ -78,7 +78,7 @@ Tabel 1. Komponen Dashboard
 | ----------------------------- | --------------------------- | ------------- | ------------- |
 | **KPI Summary**               | Total Karyawan, Total Attrition, Attrition Rate | Ringkasan     | Menyajikan ringkasan data attrition |
 | **Filter**                    | Department                  | Filter Global | Filter berdasarkan  departemen |
-| Resigned                    | Pie Chart                  | Label | Mengetahui jumlah resign dan stay |
+| Attrition                    | Pie Chart                  | Label | Mengetahui jumlah resign dan stay |
 | Job Role         | Horizontal Bar              | Kategorikal   | Melihat distribusi attrition berdasarkan posisi atau jabatan |
 | Overtime         | Bar Chart                 | Kategorikal   | Perbandingan attrition antara karyawan yang lembur dan tidak |
 | Marital Status   | Bar Chart                 | Kategorikal   | Apakah status pernikahan memengaruhi turnover |
@@ -90,7 +90,7 @@ Tabel 1. Komponen Dashboard
 Tools yang digunakan untuk membuat dashboard adalah Tableau Public versi 2024.1. Dashboard ini dibuat interaktif agar siapapun dapat mengeksplorasi dan memperoleh insight secara mandiri dari data yang tersedia.
 
 **Preview Dashboard**
-![HR Dashboard](HR Dashboard.png)
+![HR Dashboard](nafa-khairunnisa-dashboard.png)
 Gambar 1. Preview Dashboard
 
 Tautan dashboard dapat diakses [di sini](https://public.tableau.com/shared/RCC2KSMKP?:display_count=n&:origin=viz_share_link).
