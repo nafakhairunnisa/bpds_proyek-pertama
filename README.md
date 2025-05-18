@@ -55,15 +55,62 @@ Untuk memastikan kualitas data sebelum dilakukan analisis dan pemodelan, beberap
   Fitur-fitur kategorikal seperti `Gender`, `Department`, dan `JobRole` dikonversi menjadi format numerik dengan teknik encoding agar dapat digunakan dalam pemodelan machine learning.
 
 #### Feature Analysis (Chi-Square dan T-Test)
-  Untuk mengetahui fitur mana saja yang paling berpengaruh terhadap tingkat `Attrition`, dilakukan analisis relevansi fitur menggunakan pendekatan statistik:
-  - Chi-Square Test  
-    Digunakan untuk fitur-fitur kategorikal. Tujuannya adalah untuk mengetahui apakah terdapat hubungan signifikan antara fitur kategorikal dengan variabel target `Attrition`.
-  - T-Test (Uji t dua sampel)  
-    Digunakan untuk fitur numerik. Uji ini mengevaluasi apakah terdapat perbedaan signifikan pada nilai rata-rata antara karyawan yang keluar (`Attrition = Yes`) dan yang bertahan (`Attrition = No`).
 
-    Hasil dari pengujian ini membantu dalam proses feature selection, serta menjadi dasar dalam pemilihan fitur yang divisualisasikan pada dashboard, terutama fitur-fitur yang secara statistik signifikan terhadap attrition.
+Untuk mengetahui fitur mana saja yang paling berpengaruh terhadap tingkat `Attrition`, dilakukan analisis relevansi fitur menggunakan pendekatan statistik:
 
-  - Splitting data. Fitur-fitur yang terpilih dimasukkan ke dalam dataframe baru dan displit berdasarkan training set 80% dan testing set 20% untuk modeling dan evaluation.
+- Chi-Square Test  
+  Digunakan untuk fitur-fitur kategorikal. Tujuannya adalah untuk mengetahui apakah terdapat hubungan signifikan antara fitur kategorikal dengan variabel target `Attrition`.
+- T-Test (Uji t dua sampel)  
+  Digunakan untuk fitur numerik. Uji ini mengevaluasi apakah terdapat perbedaan signifikan pada nilai rata-rata antara karyawan yang keluar (`Attrition = Yes`) dan yang bertahan (`Attrition = No`).
+
+  Hasil dari pengujian ini membantu dalam proses feature selection, serta menjadi dasar dalam pemilihan fitur yang divisualisasikan pada dashboard, terutama fitur-fitur yang secara statistik signifikan terhadap attrition.
+
+#### Splitting Data
+
+Setelah melakukan feature analysis, dilakukan splitting data. Fitur-fitur yang terpilih dimasukkan ke dalam dataframe baru dan displit berdasarkan training set 80% dan testing set 20% untuk modeling dan evaluation.
+
+#### Setup Environment
+
+Untuk menjalankan analisis dan aplikasi prediksi, lingkungan Python perlu disiapkan dengan langkah berikut:
+
+**1. Clone this repository to your local computer**
+
+```
+git@github.com:nafakhairunnisa/bpds_proyek-pertama.git
+```
+
+**2. Setup Environment**
+**Pilihan 1: Menggunakan Anaconda**
+
+```
+conda create --name main-ds python=3.12.9
+conda activate main-ds
+pip install -r requirements.txt
+pip install streamlit
+```
+
+**Pilihan 2: Menggunakan pipenv (Virtual Environment di Shell/Terminal)**
+
+```
+mkdir bpds_proyek-pertama
+cd bpds_proyek-pertama
+pipenv install --python 3.12.9
+pipenv shell
+pip install -r requirements.txt
+pip install streamlit
+```
+
+**3. Buka direktori file attrition_predict.py berada melalui anaconda**
+
+```
+cd ...\bpds_proyek-pertama
+```
+
+**4. Run streamlit app**
+
+```
+streamlit run attrition_predict.py
+```
 
 ## Business Dashboard
 
@@ -74,18 +121,18 @@ Business dashboard merupakan tools yang berisi grafik analitik dari suatu datase
 Pemilihan fitur pada dashboard didasarkan pada hasil uji Chi-Square dan T-Test, yang dilakukan untuk mengidentifikasi variabel-variabel yang signifikan terhadap Attrition. Berdasarkan hasil tersebut, dipilih beberapa komponen utama yang divisualisasikan dalam dashboard, seperti ditunjukkan pada Tabel 1.
 
 Tabel 1. Komponen Dashboard
-| Komponen                      | Visualisasi                 | Jenis Data    | Tujuan    |
+| Komponen | Visualisasi | Jenis Data | Tujuan |
 | ----------------------------- | --------------------------- | ------------- | ------------- |
-| **KPI Summary**               | Total Karyawan, Total Attrition, Attrition Rate | Ringkasan     | Menyajikan ringkasan data attrition |
-| **Filter**                    | Department                  | Filter Global | Filter berdasarkan  departemen |
-| Attrition                    | Pie Chart                  | Label | Mengetahui jumlah resign dan stay |
-| Job Role         | Horizontal Bar              | Kategorikal   | Melihat distribusi attrition berdasarkan posisi atau jabatan |
-| Overtime         | Bar Chart                 | Kategorikal   | Perbandingan attrition antara karyawan yang lembur dan tidak |
-| Marital Status   | Bar Chart                 | Kategorikal   | Apakah status pernikahan memengaruhi turnover |
-| Job Satisfaction | Bar Chart           | Kategorikal   | Hubungan tingkat kepuasan kerja terhadap attrition |
-| Distance from Home            | Histogram                   | Numerikal     | Apakah jarak rumah berpengaruh terhadap attrition |
-| Monthly Income                | Bar Chart           | Numerikal     | Apakah penghasilan rendah lebih rentan terhadap attrition |
-| Years at Company              | Bar Chart       | Numerikal     | Lama bekerja berkorelasi dengan attrition |
+| **KPI Summary** | Total Karyawan, Total Attrition, Attrition Rate | Ringkasan | Menyajikan ringkasan data attrition |
+| **Filter** | Department | Filter Global | Filter berdasarkan departemen |
+| Attrition | Pie Chart | Label | Mengetahui jumlah resign dan stay |
+| Job Role | Horizontal Bar | Kategorikal | Melihat distribusi attrition berdasarkan posisi atau jabatan |
+| Overtime | Bar Chart | Kategorikal | Perbandingan attrition antara karyawan yang lembur dan tidak |
+| Marital Status | Bar Chart | Kategorikal | Apakah status pernikahan memengaruhi turnover |
+| Job Satisfaction | Bar Chart | Kategorikal | Hubungan tingkat kepuasan kerja terhadap attrition |
+| Distance from Home | Histogram | Numerikal | Apakah jarak rumah berpengaruh terhadap attrition |
+| Monthly Income | Bar Chart | Numerikal | Apakah penghasilan rendah lebih rentan terhadap attrition |
+| Years at Company | Bar Chart | Numerikal | Lama bekerja berkorelasi dengan attrition |
 
 Tools yang digunakan untuk membuat dashboard adalah Tableau Public versi 2024.1. Dashboard ini dibuat interaktif agar siapapun dapat mengeksplorasi dan memperoleh insight secara mandiri dari data yang tersedia.
 
@@ -96,6 +143,7 @@ Gambar 1. Preview Dashboard
 Tautan dashboard dapat diakses [di sini](https://public.tableau.com/shared/RCC2KSMKP?:display_count=n&:origin=viz_share_link).
 
 Insight dari dashboard:
+
 - Total karyawan yang terdata adalah 1.058 orang.
 - Terdapat 179 karyawan yang resign, yaitu sekitar 16.9% dari total.
 - Laboratory Technician merupakan job role dengan tingkat attrition tertinggi, kemungkinan disebabkan oleh beban kerja yang berat.
@@ -105,7 +153,6 @@ Insight dari dashboard:
 - Karyawan dengan rata-rata Monthly Income sebesar 4.873 lebih banyak yang resign, mengindikasikan bahwa pendapatan yang relatif rendah bisa berpengaruh terhadap keputusan keluar.
 - Karyawan yang tinggal dalam radius 0–4 km dari kantor justru banyak yang resign, kemungkinan karena faktor lain di luar jarak.
 - Karyawan yang bekerja selama 0–6 tahun paling banyak mengalami attrition, yang bisa mencerminkan fase eksplorasi di awal karier.
-- Departemen Research & Development menjadi penyumbang attrition terbanyak, yakni 107 dari total 179 kasus attrition.
 
 ## Model Machine Learning
 
@@ -117,38 +164,6 @@ Model ini telah diimplementasikan ke dalam aplikasi web sederhana menggunakan St
 
 Berikut link akses aplikasi: [Klik di sini](https://hr-attrition-prediction.streamlit.app/).
 
-Berikut cara run aplikasi di lokal:
-
-**1. Clone this repository to your local computer**
-```
-git@github.com:nafakhairunnisa/bpds_proyek-pertama.git
-```
-**2. Setup Environment**
-**Anaconda**
-```
-conda create --name main-ds python=3.9
-conda activate main-ds
-pip install -r requirements.txt
-pip install streamlit
-```
-**Shell/Terminal**
-```
-mkdir bpds_proyek-pertama
-cd bpds_proyek-pertama
-pipenv install
-pipenv shell
-pip install -r requirements.txt
-pip install streamlit
-```
-**3. Buka direktori file attrition_predict.py berada melalui anaconda**
-```
-cd ...\bpds_proyek-pertama
-```
-**4. Run streamlit app**
-```
-streamlit run attrition_predict.py
-```
-
 Aplikasi akan berjalan di browser secara otomatis dan menampilkan form prediksi attrition berdasarkan input karakteristik karyawan. Model ini dapat membantu dalam proses pengambilan keputusan preventif terhadap risiko resign.
 
 ## Conclusion
@@ -156,19 +171,21 @@ Aplikasi akan berjalan di browser secara otomatis dan menampilkan form prediksi 
 Berdasarkan hasil analisis data, visualisasi dashboard, serta implementasi model machine learning, proyek ini berhasil mengidentifikasi faktor-faktor utama yang memengaruhi keputusan karyawan untuk keluar dari perusahaan (attrition). Pengetahuan ini dapat digunakan sebagai dasar dalam pengambilan keputusan strategis oleh tim Human Resource (HR).
 
 **Insights**:
+
 - Tingkat attrition pada data mencapai 16.9% dari total 1.058 karyawan.
 - Tujuh faktor signifikan penyebab utama tingginya attrition, yaitu:
-    - Beban kerja yang berat terutama pada job role seperti Laboratory Technician.
-    - Overtime (lembur) tinggi berdampak pada meningkatnya niat resign.
-    - Status pernikahan, di mana karyawan lajang memiliki risiko attrition lebih tinggi.
-    - Job satisfaction rendah, terutama pada nilai 3 dari skala 1–4.
-    - Penghasilan rendah dan jarak rumah yang terlalu dekat atau terlalu jauh dapat memengaruhi loyalitas.
-    - Lama bekerja <6 tahun menunjukkan masa rawan keluar, kemungkinan karena fase eksplorasi karier.
+  - Beban kerja yang berat terutama pada job role seperti Laboratory Technician.
+  - Overtime (lembur) tinggi berdampak pada meningkatnya niat resign.
+  - Status pernikahan, di mana karyawan lajang memiliki risiko attrition lebih tinggi.
+  - Job satisfaction rendah, terutama pada nilai 3 dari skala 1–4.
+  - Penghasilan rendah dan jarak rumah yang terlalu dekat atau terlalu jauh dapat memengaruhi loyalitas.
+  - Lama bekerja <6 tahun menunjukkan masa rawan keluar, kemungkinan karena fase eksplorasi karier.
 - Model machine learning Random Forest dengan akurasi 84% telah diimplementasikan dalam bentuk aplikasi prediksi attrition berbasis web (Streamlit).
 - Dashboard interaktif telah dibuat menggunakan Tableau 2024.1 untuk memudahkan eksplorasi dan monitoring faktor risiko attrition.
 
 **Rekomendasi Action Items**:
 Untuk membantu perusahaan mengurangi angka attrition dan meningkatkan retensi karyawan, berikut lima rekomendasi action items yang bisa dilakukan:
+
 - Membatasi lembur secara bertahap, dan evaluasi ulang beban kerja tiap job role yang terdampak attrition tinggi.
 - Meningkatkan kompensasi dan tunjangan secara adil berdasarkan beban kerja dan tanggung jawab posisi.
 - Melaksanakan survei kepuasan kerja berkala untuk mendeteksi job satisfaction dan menyesuaikan strategi retensi.
